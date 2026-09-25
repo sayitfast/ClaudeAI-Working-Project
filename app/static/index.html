@@ -50,9 +50,42 @@
           </div>
 
           <figure id="preview" class="preview" hidden>
-            <img id="preview-image" src="" alt="">
+            <div id="crop-stage" class="crop-stage">
+              <img id="preview-image" src="" alt="">
+              <div id="crop-layer" class="crop-layer" hidden>
+                <div
+                  id="crop-box"
+                  class="crop-box"
+                  role="group"
+                  tabindex="0"
+                  aria-label="Crop area"
+                  aria-describedby="crop-help"
+                >
+                  <span class="crop-handle crop-handle-nw" data-handle="nw" aria-hidden="true"></span>
+                  <span class="crop-handle crop-handle-ne" data-handle="ne" aria-hidden="true"></span>
+                  <span class="crop-handle crop-handle-sw" data-handle="sw" aria-hidden="true"></span>
+                  <span class="crop-handle crop-handle-se" data-handle="se" aria-hidden="true"></span>
+                </div>
+              </div>
+            </div>
             <figcaption id="preview-caption" class="visually-hidden"></figcaption>
           </figure>
+
+          <p id="crop-help" class="crop-help" hidden>
+            Drag the box or its corners to frame the bird, or drag across the photo to draw a new box.
+            With a keyboard, use the arrow keys to move the box and Shift + arrow keys to resize it.
+            Press Enter to apply the crop or Escape to cancel.
+          </p>
+          <p id="crop-status" class="visually-hidden" role="status" aria-live="polite"></p>
+
+          <div id="crop-controls" class="crop-controls" hidden>
+            <button id="crop-button" class="button button-secondary" type="button">Crop photo</button>
+            <button id="apply-crop-button" class="button button-primary" type="button" hidden>Apply crop</button>
+            <button id="cancel-crop-button" class="button button-secondary" type="button" hidden>Cancel</button>
+            <button id="undo-crop-button" class="button button-secondary" type="button" hidden>
+              Use original photo
+            </button>
+          </div>
 
           <div class="actions">
             <button id="identify-button" class="button button-primary" type="submit" disabled>

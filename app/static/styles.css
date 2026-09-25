@@ -23,6 +23,9 @@
   --color-info-bg: #e8f0fe;
   --color-info-text: #1a3d7c;
   --color-info-border: #a8c1ef;
+  /* Crop overlay colors sit on top of the photo, so they are the same in dark mode. */
+  --color-crop-line: #ffffff;
+  --color-crop-shade: rgba(0, 0, 0, 0.55);
   --radius: 12px;
   --shadow: 0 1px 3px rgba(0, 0, 0, 0.08), 0 4px 16px rgba(0, 0, 0, 0.05);
   --font: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
@@ -221,6 +224,87 @@ body {
   object-fit: contain;
 }
 
+.crop-stage {
+  position: relative;
+}
+
+/* Sits exactly over the photo; JavaScript sets its position and size. */
+.crop-layer {
+  position: absolute;
+  overflow: hidden;
+  border-radius: var(--radius);
+  cursor: crosshair;
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* The huge shadow darkens everything outside the box; the layer clips it. */
+.crop-box {
+  position: absolute;
+  border: 2px solid var(--color-crop-line);
+  box-shadow: 0 0 0 9999px var(--color-crop-shade);
+  cursor: move;
+}
+
+.crop-box:focus-visible {
+  outline-offset: -6px;
+}
+
+.crop-handle {
+  position: absolute;
+  width: 1.5rem;
+  height: 1.5rem;
+  border: 0 solid var(--color-crop-line);
+}
+
+.crop-handle-nw {
+  top: -2px;
+  left: -2px;
+  border-top-width: 5px;
+  border-left-width: 5px;
+  cursor: nwse-resize;
+}
+
+.crop-handle-ne {
+  top: -2px;
+  right: -2px;
+  border-top-width: 5px;
+  border-right-width: 5px;
+  cursor: nesw-resize;
+}
+
+.crop-handle-sw {
+  bottom: -2px;
+  left: -2px;
+  border-bottom-width: 5px;
+  border-left-width: 5px;
+  cursor: nesw-resize;
+}
+
+.crop-handle-se {
+  bottom: -2px;
+  right: -2px;
+  border-bottom-width: 5px;
+  border-right-width: 5px;
+  cursor: nwse-resize;
+}
+
+.crop-help {
+  margin: 0.75rem 0 0;
+  color: var(--color-muted);
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.crop-controls {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
 .actions {
   display: flex;
   flex-wrap: wrap;
@@ -410,7 +494,8 @@ body {
     padding: 1.1rem;
   }
 
-  .actions .button {
+  .actions .button,
+  .crop-controls .button {
     flex: 1 1 100%;
   }
 }
