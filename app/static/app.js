@@ -344,7 +344,7 @@
 
   /** Show the full photo with a crop box the user can move and resize. */
   function startCrop() {
-    if (!state.originalFile || state.busy || state.cropping) {
+  if (!state.originalFile || state.busy || state.cropping || state.cropWorking) {
       return;
     }
     clearError();
