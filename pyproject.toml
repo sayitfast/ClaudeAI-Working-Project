@@ -1,0 +1,39 @@
+[project]
+name = "bird-classifier-identifier"
+version = "1.0.0"
+description = "Local web app that identifies bird species from a photo."
+requires-python = ">=3.10"
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = [
+  "E",    # pycodestyle errors
+  "W",    # pycodestyle warnings
+  "F",    # pyflakes
+  "I",    # isort
+  "B",    # flake8-bugbear
+  "UP",   # pyupgrade
+  "S",    # flake8-bandit (security)
+  "SIM",  # flake8-simplify
+  "RUF",  # ruff-specific rules
+]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**" = ["S101"]
+
+[tool.ruff.lint.flake8-bugbear]
+extend-immutable-calls = ["fastapi.File"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-m 'not integration'"
+filterwarnings = [
+  # Starlette suggests httpx2; the project intentionally uses httpx for TestClient.
+  "ignore:Using `httpx` with `starlette.testclient` is deprecated",
+]
+markers = [
+  "integration: tests that download and run the real model (run with: pytest -m integration)",
+]

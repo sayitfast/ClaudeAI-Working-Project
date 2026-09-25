@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Upload a photo of a bird and find out which species it is.">
+    <title>Bird Species Identifier</title>
+    <link rel="stylesheet" href="/static/styles.css">
+    <script src="/static/app.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to main content</a>
+
+    <header class="site-header">
+      <h1>Bird Species Identifier</h1>
+      <p class="tagline">Upload a bird photo and get the most likely species from 525 possibilities.</p>
+    </header>
+
+    <main id="main" class="container">
+      <p id="service-status" class="notice notice-warning" role="status" hidden></p>
+
+      <section class="card" aria-labelledby="upload-heading">
+        <h2 id="upload-heading">1. Choose a photo</h2>
+
+        <form id="upload-form" novalidate>
+          <div
+            id="drop-zone"
+            class="drop-zone"
+            role="button"
+            tabindex="0"
+            aria-describedby="drop-hint"
+          >
+            <svg class="drop-icon" aria-hidden="true" viewBox="0 0 24 24" width="40" height="40">
+              <path d="M12 3l4 4h-3v6h-2V7H8l4-4zm-7 14h14v2H5v-2z" fill="currentColor"/>
+            </svg>
+            <p class="drop-title">Drag and drop a photo here<span class="visually-hidden">, or press Enter to choose one</span></p>
+            <p id="drop-hint" class="drop-hint">JPEG, PNG, or WEBP, up to <span id="max-size">10</span> MB</p>
+          </div>
+
+          <div class="choose-row">
+            <input
+              id="file-input"
+              class="visually-hidden file-input"
+              type="file"
+              name="file"
+              accept="image/jpeg,image/png,image/webp,.jpg,.jpeg,.png,.webp"
+            >
+            <label for="file-input" class="button button-secondary">Choose photo</label>
+            <span id="file-name" class="file-name">No photo selected</span>
+          </div>
+
+          <figure id="preview" class="preview" hidden>
+            <img id="preview-image" src="" alt="">
+            <figcaption id="preview-caption" class="visually-hidden"></figcaption>
+          </figure>
+
+          <div class="actions">
+            <button id="identify-button" class="button button-primary" type="submit" disabled>
+              <span class="spinner" aria-hidden="true"></span>
+              <span class="button-label">Identify bird</span>
+            </button>
+            <button id="reset-button" class="button button-secondary" type="button" hidden>
+              Try another photo
+            </button>
+          </div>
+        </form>
+      </section>
+
+      <div id="live-region">
+        <p id="loading-message" class="loading" role="status" hidden>Identifying the bird&hellip; this can take a few seconds.</p>
+
+        <div id="error-message" class="notice notice-error" role="alert" hidden></div>
+
+        <p id="result-announcement" class="visually-hidden" role="status" aria-live="polite"></p>
+
+        <section id="results" class="card results" aria-labelledby="results-heading" hidden>
+          <h2 id="results-heading" tabindex="-1">2. Result</h2>
+
+          <div class="top-result">
+            <p class="top-label">Most likely species</p>
+            <p id="top-species" class="top-species"></p>
+            <p class="top-confidence"><span id="top-confidence"></span> confidence</p>
+          </div>
+
+          <p id="low-confidence-note" class="notice notice-info" hidden>
+            The model isn&rsquo;t sure about this one. The photo may be unclear, the bird may be
+            small or partly hidden, or the species may not be one of the 525 it knows.
+          </p>
+
+          <h3 id="others-heading">Other possibilities</h3>
+          <ol id="other-results" class="other-results" aria-labelledby="others-heading"></ol>
+        </section>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <p>Runs entirely on your computer. Photos are not stored.</p>
+    </footer>
+  </body>
+</html>

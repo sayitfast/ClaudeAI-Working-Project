@@ -1,0 +1,11 @@
+# Runtime dependencies (pinned). Install with: pip install -r requirements.txt
+fastapi==0.141.1
+starlette==1.7.0
+pydantic==2.13.5
+uvicorn==0.54.0
+python-multipart==0.0.32
+python-dotenv==1.2.3
+pillow==12.3.0
+transformers==5.17.0
+huggingface_hub==1.33.0
+torch==2.14.0
