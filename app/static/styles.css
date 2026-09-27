@@ -1,19 +1,19 @@
 /* Bird Species Identifier styles. Plain CSS, no external resources. */
 
 :root {
-  --color-bg: #f4f7f5;
+  --color-bg: #f6f4f8;
   --color-surface: #ffffff;
-  --color-text: #1b2420;
-  --color-muted: #4a5750;
-  --color-border: #c9d4ce;
-  --color-drop-border: #6b7a72;
-  --color-primary: #1f6b4a;
-  --color-primary-hover: #17543a;
+  --color-text: #221b28;
+  --color-muted: #554a5c;
+  --color-border: #d2c9d9;
+  --color-drop-border: #766b7e;
+  --color-primary: #6b3fa0;
+  --color-primary-hover: #55307f;
   --color-primary-contrast: #ffffff;
   --color-focus: #0b57d0;
-  --color-drop-active: #e3f1ea;
-  --color-bar-track: #e1e8e4;
-  --color-bar-fill: #2a8a60;
+  --color-drop-active: #efe6f8;
+  --color-bar-track: #e7e1ec;
+  --color-bar-fill: #8a5cc4;
   --color-error-bg: #fdecea;
   --color-error-text: #8a1c12;
   --color-error-border: #e5a39c;
@@ -33,19 +33,19 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --color-bg: #111714;
-    --color-surface: #1a221e;
-    --color-text: #e8efeb;
-    --color-muted: #b4c2ba;
-    --color-border: #3a4a42;
-    --color-drop-border: #7d8f86;
-    --color-primary: #5cc493;
-    --color-primary-hover: #7dd6ab;
-    --color-primary-contrast: #0c1a13;
+    --color-bg: #151119;
+    --color-surface: #1f1a24;
+    --color-text: #eee8f2;
+    --color-muted: #c0b4c8;
+    --color-border: #463a4f;
+    --color-drop-border: #8a7d93;
+    --color-primary: #b794e6;
+    --color-primary-hover: #cbb0ef;
+    --color-primary-contrast: #1a0f2b;
     --color-focus: #8ab4f8;
-    --color-drop-active: #22332a;
-    --color-bar-track: #2c3832;
-    --color-bar-fill: #5cc493;
+    --color-drop-active: #2e2238;
+    --color-bar-track: #342c3a;
+    --color-bar-fill: #b794e6;
     --color-error-bg: #3a1714;
     --color-error-text: #ffb4ab;
     --color-error-border: #7a2e27;
